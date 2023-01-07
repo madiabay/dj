@@ -1,11 +1,22 @@
 from django.http import HttpResponse, HttpResponseNotFound
 from django.shortcuts import render, redirect
 
+from .models import Women
+
 
 # Create your views here.
 
+menu = ['About site', 'Add Post', 'Feedback', 'Login']
 def index(request):
-    return HttpResponse('hello world')
+    posts = Women.objects.all()
+
+    context = {
+        'title': 'Madi site',
+        'body': 'Madi body',
+        'menu': menu,
+        'posts': posts,
+    }
+    return render(request, 'women/index.html', context)
 
 
 def cats(request, cat_id):
