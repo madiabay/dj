@@ -5,9 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0954daf4-576a-4f02-8895-fa7bd41778e7" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/coolsite/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/coolsite/settings.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/coolsite/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/coolsite/urls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/women/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/women/models.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
