@@ -1,7 +1,7 @@
-from django.http import HttpResponse, HttpResponseNotFound
+from django.http import HttpResponse, HttpResponseNotFound, Http404
 from django.shortcuts import render, redirect
 
-from .models import Women
+from .models import Women, Category
 
 
 # Create your views here.
@@ -14,12 +14,14 @@ menu = [
 ]
 def index(request):
     posts = Women.objects.all()
+    categories = Category.objects.all()
 
     context = {
         'title': 'Madi site',
-        'body': 'Madi body',
         'menu': menu,
         'posts': posts,
+        'categories': categories,
+        'cat_selected': 0,
     }
     return render(request, 'women/index.html', context)
 
@@ -37,5 +39,22 @@ def login(request):
 
 def show_post(request, post_id):
     return HttpResponse(f'show_post id->{post_id}')
+
+def show_category(request, cat_id):
+    posts = Women.objects.filter(cat_id=cat_id)
+    categories = Category.objects.all()
+
+    if len(posts) == 0:
+        raise Http404()
+
+    context = {
+        'title': 'Отображение по рубрикам',
+        'menu': menu,
+        'posts': posts,
+        'categories': categories,
+        'cat_selected': cat_id,
+    }
+    return render(request, 'women/index.html', context)
+
 def pageNotFound(request, exception):
     return HttpResponseNotFound('Not found ------------------------')
