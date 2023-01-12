@@ -5,19 +5,24 @@ from django.urls import reverse
 # Create your models here.
 
 class Women(models.Model):
-    title = models.CharField(max_length=200)
-    content = models.TextField()
-    photo = models.ImageField(upload_to="photos/%Y/%m/%d/")
-    time_create = models.DateTimeField(auto_now_add=True)
-    time_update = models.DateTimeField(auto_now=True)
-    is_published = models.BooleanField(default=True)
-    cat = models.ForeignKey('Category', on_delete=models.PROTECT, null=True)
+    title = models.CharField(max_length=200, verbose_name='Титулка')
+    content = models.TextField(verbose_name='Контент')
+    photo = models.ImageField(upload_to="photos/%Y/%m/%d/", verbose_name='Фото')
+    time_create = models.DateTimeField(auto_now_add=True, verbose_name='Создан')
+    time_update = models.DateTimeField(auto_now=True, verbose_name='Обнова')
+    is_published = models.BooleanField(default=True, verbose_name='Опубликовано?')
+    cat = models.ForeignKey('Category', on_delete=models.PROTECT, null=True, verbose_name='Категория')
 
     def __str__(self):
         return f'{self.title}'
 
     def get_absolute_url(self):
         return reverse('post', kwargs={'post_id': self.pk})
+
+    class Meta:
+        verbose_name = 'Известные женшины'
+        verbose_name_plural = 'Известные женшины'
+        ordering = ['time_create', 'title']
 
 class Category(models.Model):
     name = models.CharField(max_length=50, db_index=True)
