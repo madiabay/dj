@@ -8,11 +8,11 @@ register = template.Library()
 # def get_categories():
 #     return Category.objects.all()
 
-@register.inclusion_tag('women/list_cats.html')
-def get_categories2(sort=None, cat_selected=0):
-    if not sort:
-        cats = Category.objects.all()
-    else:
-        cats = Category.objects.order_by(sort)
-
-    return {'cats': cats, 'cat_selected': cat_selected}
+# @register.inclusion_tag('women/list_cats.html')
+# def get_categories2(sort=None, cat_selected=0):
+#     if not sort:
+#         cats = Category.objects.all()
+#     else:
+#         cats = Category.objects.order_by(sort)
+#
+#     return {'cats': cats, 'cat_selected': cat_selected}
