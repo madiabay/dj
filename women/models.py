@@ -23,6 +23,7 @@ class Women(models.Model):
     class Meta:
         verbose_name = 'Известные женшины'
         verbose_name_plural = 'Известные женшины'
+        ordering = ('id',)
 
 class Category(models.Model):
     name = models.CharField(max_length=50, db_index=True)
