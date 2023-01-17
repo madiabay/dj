@@ -9,8 +9,11 @@ urlpatterns = [
     # path('addpost/', addpost, name='add_post'), # using func
     path('addpost/', AddPost.as_view(), name='add_post'), # using class
     path('contact/', contact, name='contact'), # using func
-    path('register/', RegisterUser.as_view(), name='register'), # using func
-    path('login/', login, name='login'), # using func
+    path('register/', RegisterUser.as_view(), name='register'), # using class
+    path('login/', LoginUser.as_view(), name='login'), # using class
+
+    path('logout/', logout_user, name='logout'), # using class
+
     # path('post/<slug:post_slug>/', show_post, name='post'), # using func
     path('post/<slug:post_slug>/', ShowPost.as_view(), name='post'), # using class
     # path('category/<int:cat_id>/', show_category, name='category'), # using func
