@@ -10,7 +10,8 @@ urlpatterns = [
     path('about/', about, name='about'), # using func
     # path('addpost/', addpost, name='add_post'), # using func
     path('addpost/', AddPost.as_view(), name='add_post'), # using class
-    path('contact/', contact, name='contact'), # using func
+    # path('contact/', contact, name='contact'), # using func
+    path('contact/', ContactFormView.as_view(), name='contact'), # using class
     path('register/', RegisterUser.as_view(), name='register'), # using class
     path('login/', LoginUser.as_view(), name='login'), # using class
 

@@ -8,10 +8,10 @@ from django.contrib.auth.views import LoginView # for login
 from django.contrib.auth import logout, login # for logout and login
 
 #class
-from django.views.generic import ListView, DetailView, CreateView
+from django.views.generic import ListView, DetailView, CreateView, FormView
 
 from .models import Women, Category
-from .forms import AddPostForm
+from .forms import AddPostForm, ContactForm
 from .utils import *
 
 
@@ -81,8 +81,19 @@ class AddPost(LoginRequiredMixin, DataMixin, CreateView):
 #                   {'form': form, 'menu': menu, 'title': 'Добавление статьи'}
 #                   )
 
-def contact(request):
-    return HttpResponse('contact')
+class ContactFormView(DataMixin, FormView):
+    form_class = ContactForm
+    template_name = 'women/contact.html'
+    success_url = reverse_lazy('home')
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        cats_def = self.get_user_context(title='Обратная связь')
+        return dict(list(context.items()) + list(cats_def.items()))
+
+    def form_valid(self, form):
+        print(form.cleaned_data)
+        return redirect('home')
 
 
 class RegisterUser(DataMixin, CreateView):
